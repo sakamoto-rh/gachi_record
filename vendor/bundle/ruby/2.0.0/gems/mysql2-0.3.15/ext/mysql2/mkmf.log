@@ -1,0 +1,181 @@
+have_header: checking for ruby/thread.h... -------------------- yes
+
+"gcc-4.2 -o conftest -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib  -fstack-protector -L/usr/local/lib     -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(void) {return 0;}
+/* end */
+
+"gcc-4.2 -E -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/thread.h>
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_call_without_gvl() in ruby/thread.h... -------------------- yes
+
+"gcc-4.2 -o conftest -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib  -fstack-protector -L/usr/local/lib     -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/thread.h>
+4: 
+5: /*top*/
+6: int main(void) {return 0;}
+7: extern int t(void);
+8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_call_without_gvl; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_blocking_region()... -------------------- yes
+
+"gcc-4.2 -o conftest -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib  -fstack-protector -L/usr/local/lib     -lruby-static  -lpthread -ldl -lobjc "
+conftest.c: In function ‘t’:
+conftest.c:6: warning: ‘rb_thread_blocking_region’ is deprecated (declared at /Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/intern.h:830)
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(void) {return 0;}
+5: extern int t(void);
+6: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_blocking_region; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_wait_for_single_fd()... -------------------- yes
+
+"gcc-4.2 -o conftest -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib  -fstack-protector -L/usr/local/lib     -lruby-static  -lpthread -ldl -lobjc "
+conftest.c: In function ‘t’:
+conftest.c:6: error: ‘rb_wait_for_single_fd’ undeclared (first use in this function)
+conftest.c:6: error: (Each undeclared identifier is reported only once
+conftest.c:6: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(void) {return 0;}
+5: extern int t(void);
+6: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_wait_for_single_fd; return 0; }
+/* end */
+
+"gcc-4.2 -o conftest -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib  -fstack-protector -L/usr/local/lib     -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(void) {return 0;}
+5: extern int t(void);
+6: int t(void) { rb_wait_for_single_fd(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_hash_dup()... -------------------- yes
+
+"gcc-4.2 -o conftest -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib  -fstack-protector -L/usr/local/lib     -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(void) {return 0;}
+5: extern int t(void);
+6: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_hash_dup; return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_intern3()... -------------------- yes
+
+"gcc-4.2 -o conftest -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib  -fstack-protector -L/usr/local/lib     -lruby-static  -lpthread -ldl -lobjc "
+conftest.c: In function ‘t’:
+conftest.c:6: error: ‘rb_intern3’ undeclared (first use in this function)
+conftest.c:6: error: (Each undeclared identifier is reported only once
+conftest.c:6: error: for each function it appears in.)
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(void) {return 0;}
+5: extern int t(void);
+6: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_intern3; return 0; }
+/* end */
+
+"gcc-4.2 -o conftest -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib  -fstack-protector -L/usr/local/lib     -lruby-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main(void) {return 0;}
+5: extern int t(void);
+6: int t(void) { rb_intern3(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for mysql.h... -------------------- yes
+
+"gcc-4.2 -E -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/usr/local/Cellar/mysql/5.6.14/include/mysql -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysql.h>
+/* end */
+
+--------------------
+
+have_header: checking for errmsg.h... -------------------- yes
+
+"gcc-4.2 -E -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/usr/local/Cellar/mysql/5.6.14/include/mysql -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <errmsg.h>
+/* end */
+
+--------------------
+
+have_header: checking for mysqld_error.h... -------------------- yes
+
+"gcc-4.2 -E -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/usr/local/Cellar/mysql/5.6.14/include/mysql -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <mysqld_error.h>
+/* end */
+
+--------------------
+
+"gcc-4.2 -o conftest -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/usr/local/Cellar/mysql/5.6.14/include/mysql -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib  -fstack-protector -L/usr/local/lib    -L/usr/local/Cellar/mysql/5.6.14/lib -lmysqlclient  -lruby-static  -Wall -funroll-loops -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"gcc-4.2 -o conftest -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/x86_64-darwin11.4.2 -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0/ruby/backward -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include/ruby-2.0.0 -I. -I/usr/local/Cellar/mysql/5.6.14/include/mysql -I/Users/sakamoto/.rbenv/versions/2.0.0-p0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe -Wall -funroll-loops conftest.c  -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib -L. -L/Users/sakamoto/.rbenv/versions/2.0.0-p0/lib  -fstack-protector -L/usr/local/lib    -L/usr/local/Cellar/mysql/5.6.14/lib -lmysqlclient  -lruby-static  -Wl,-rpath,/usr/local/Cellar/mysql/5.6.14/lib -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
